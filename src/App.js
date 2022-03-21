@@ -19,7 +19,7 @@ class App extends Component {
     };
 
     refreshTask=() =>{
-        fetch("http://localhost:8080/task/mytasks/Umasankar", {
+        fetch("http://localhost:8080/tms/task/mytasks/Umasankar", {
             mode: 'cors'
         })
             .then((resp) => resp.json())
@@ -31,7 +31,7 @@ class App extends Component {
 
     onTglStatus = (task) => {
         console.log("completing task");
-        fetch("http://localhost:8080/task/close", {
+        fetch("http://localhost:8080/tms/task/close", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -62,7 +62,7 @@ class App extends Component {
             status: "open"
         };
         console.log(JSON.stringify(inputOrder))
-        fetch("http://localhost:8080/task/create", {
+        fetch("http://localhost:8080/tms/task/create", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
