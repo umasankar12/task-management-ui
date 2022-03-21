@@ -20,7 +20,7 @@ class App extends Component {
     };
 
     refreshTask=() =>{
-        fetch("http://localhost:8080/tms/task/mytasks/Umasankar", {
+        fetch(this.state.baseUrl+"/tms/task/mytasks/Umasankar", {
             mode: 'cors'
         })
             .then((resp) => resp.json())
@@ -33,12 +33,13 @@ class App extends Component {
         }else {
             this.setState({baseUrl:"http://129.153.3.10:8080"});
         }
+        console.log("BaseURl is :"+this.state.baseUrl)
         this.refreshTask();
     }
 
     onTglStatus = (task) => {
         console.log("completing task");
-        fetch("http://localhost:8080/tms/task/close", {
+        fetch(this.state.baseUrl+"/tms/task/close", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
@@ -69,7 +70,7 @@ class App extends Component {
             status: "open"
         };
         console.log(JSON.stringify(inputOrder))
-        fetch("http://localhost:8080/tms/task/create", {
+        fetch(this.state.baseUrl+"/tms/task/create", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
