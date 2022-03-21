@@ -15,6 +15,7 @@ class App extends Component {
         display:'none',
         taskError:{},
         lastTask:{},
+        baseUrl:""
 
     };
 
@@ -26,6 +27,12 @@ class App extends Component {
             .then((data) => this.setState({ tasks: data }, () => {console.log("result =", this.state.tasks);}));
     }
     componentDidMount() {
+        console.log({ REACT_APP_API_ENDPOINT: process.env.REACT_APP_CONFIG_MODE })
+        if(process.env.REACT_APP_CONFIG_MODE){
+            this.setState({baseUrl:"http://localhost:8080"});
+        }else {
+            this.setState({baseUrl:"http://129.153.3.10:8080"});
+        }
         this.refreshTask();
     }
 
