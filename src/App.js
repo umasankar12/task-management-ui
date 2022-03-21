@@ -15,7 +15,7 @@ class App extends Component {
         display:'none',
         taskError:{},
         lastTask:{},
-        baseUrl:""
+        baseUrl:"http://129.153.3.10:8080"
 
     };
 
@@ -28,10 +28,8 @@ class App extends Component {
     }
     componentDidMount() {
         console.log({ REACT_APP_API_ENDPOINT: process.env.REACT_APP_CONFIG_MODE })
-        if(process.env.REACT_APP_CONFIG_MODE){
+        if(process.env.REACT_APP_CONFIG_MODE == 'local'){
             this.setState({baseUrl:"http://localhost:8080"});
-        }else {
-            this.setState({baseUrl:"http://129.153.3.10:8080"});
         }
         console.log("BaseURl is :"+this.state.baseUrl)
         this.refreshTask();
